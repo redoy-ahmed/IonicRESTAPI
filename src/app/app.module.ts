@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { AuthGuard } from './services/auth-guard.service';
+import { AuthenticationService } from './services/Authentication.service';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -17,10 +21,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    HttpClientModule],
+    HttpClientModule,
+    IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthGuard,
+    AuthenticationService,,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

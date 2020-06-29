@@ -1,6 +1,7 @@
 //student-list.page.ts
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { AuthenticationService } from '../services/Authentication.service';
 
 @Component({
   selector: 'app-student-list',
@@ -11,7 +12,7 @@ export class StudentListPage implements OnInit {
 
   studentsData: any;
 
-  constructor(public apiService: ApiService) {
+  constructor(public apiService: ApiService, private authService: AuthenticationService) {
     this.studentsData = [];
   }
 
@@ -40,6 +41,10 @@ export class StudentListPage implements OnInit {
       //Update list after delete is successful
       this.getAllStudents();
     });
+  }
+
+  logoutUser(){
+    this.authService.logout();
   }
 
 }
